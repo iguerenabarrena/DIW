@@ -8,6 +8,7 @@
     --color-text-secondary: #7f8c8d;
     --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     --border-radius: 8px;
+    /*Define la duración global (0.3 segundos) para las animaciones y efectos visuales.*/
     --transition-speed: 0.3s;
 }
 /* 
@@ -139,7 +140,7 @@ body {
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
 }

@@ -1,0 +1,127 @@
+/* ==========================================================================
+   RESET BASE (Para asegurar que los tamaños y márgenes cuadren exactamente)
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos visuales comunes para las cajas de los ejercicios */
+.box {
+    background-color: #3498db;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   EJERCICIO 1: Distribución básica
+   - Cajas horizontales, centradas y con separación.
+   ========================================================================== */
+.ejercicio-1 {
+    display: flex;             /* Convierte el contenedor en Flexbox */
+    flex-direction: row;       /* Coloca las cajas horizontalmente (valor por defecto) */
+    justify-content: center;   /* Centra las cajas horizontalmente a lo largo del eje principal */
+    align-items: center;       /* Centra el contenido (las cajas) verticalmente en el eje cruzado */
+    gap: 15px;                 /* Añade 15px de separación entre cada caja */
+    height: 200px;             /* Altura fija del contenedor */
+    background-color: #ecf0f1;
+}
+
+/* ==========================================================================
+   EJERCICIO 2: Dirección
+   - Cajas en vertical centradas y luego cambiadas a horizontal con 1 propiedad.
+   ========================================================================== */
+.ejercicio-2 {
+    display: flex;
+    /* flex-direction: column; <-- Estado inicial pedido en vertical */
+    
+    /* CAMBIO A HORIZONTAL: Usamos 'flex-direction: row' para cambiar la dirección 
+       de todo el eje principal utilizando una sola propiedad CSS. */
+    flex-direction: row; 
+    
+    justify-content: center;   /* Centra las cajas a lo largo del eje principal */
+    align-items: center;       /* Centra las cajas a lo largo del eje cruzado */
+    gap: 10px;                 /* Separa las cajas 10px */
+    background-color: #f8f9fa;
+    padding: 1rem;
+}
+
+/* ==========================================================================
+   EJERCICIO 3: Flex Wrap
+   - Cajas de tamaño fijo que saltan de línea automáticamente al no caber.
+   ========================================================================== */
+.ejercicio-3 {
+    display: flex;
+    flex-wrap: wrap;           /* Permite que las cajas pasen a la siguiente línea cuando falta espacio */
+    gap: 10px;                 /* Separación de 10px tanto horizontal como verticalmente */
+    padding: 1rem;
+    background-color: #ecf0f1;
+}
+
+.ejercicio-3 .box {
+    width: 150px;              /* Tamaño fijo para cada caja */
+}
+
+/* ==========================================================================
+   EJERCICIO 4: Flex Grow
+   - Reparto proporcional del espacio disponible.
+   ========================================================================== */
+.ejercicio-4 {
+    display: flex;
+    gap: 10px;                 /* (Opcional) Separa las cajas para visualizar el reparto */
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+/* 
+  flex-grow define qué proporción del espacio libre disponible toma cada caja.
+  Caja 1: Toma 2 partes (el doble).
+  Cajas 2 y 3: Toman 1 parte cada una del espacio restante.
+*/
+.ejercicio-4 .caja-1 {
+    flex-grow: 2; 
+}
+
+.ejercicio-4 .caja-2,
+.ejercicio-4 .caja-3 {
+    flex-grow: 1;
+}
+
+/* ==========================================================================
+   EJERCICIO 5: Menú de navegación
+   - Logo a la izquierda y enlaces alineados a la derecha.
+   ========================================================================== */
+.nav-bar {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio: Logo al extremo izq, enlaces al der */
+    align-items: center;            /* Centra verticalmente el logo y la lista */
+    padding: 1rem 2rem;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.nav-bar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.nav-bar ul {
+    display: flex;                  /* Flexbox en la lista para poner los <li> en horizontal */
+    list-style: none;               /* Quita los puntos de la lista */
+    gap: 20px;                      /* Separación de 20px entre enlaces */
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-bar a:hover {
+    color: #e67e22;
+}
