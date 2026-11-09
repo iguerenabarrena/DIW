@@ -1,0 +1,214 @@
+:root {
+    --color-primary: #e67e22;
+    --color-primary-hover: #d35400;
+    --color-secondary: #2c3e50;
+    --color-page: #f8f9fa;
+    --color-dashboard: #ecf0f1;
+    --color-text: #333333;
+    --color-text-secondary: #7f8c8d;
+    --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+}
+/* 
+  RESET UNIVERSAL Y CAJA TRADICIONAL
+  
+  1. SELECTORES:
+     - *          : Selecciona todos los elementos HTML reales de la página.
+     - ::before   : Selecciona los pseudo-elementos (decoraciones virtuales) creados ANTES del contenido.
+     - ::after    : Selecciona los pseudo-elementos (decoraciones virtuales) creados DESPUÉS del contenido.
+     - Los doble dos puntos (::) indican que son pseudo-elementos de CSS3.
+
+  2. PROPIEDADES DE RESET:
+     - box-sizing: border-box; -> Hace que el 'width' y 'height' incluyan el padding y el border, 
+                                 evitando que los elementos se desborden o calculen mal su tamaño.
+     - margin: 0;              -> Elimina los márgenes exteriores por defecto que añaden los navegadores.
+     - padding: 0;             -> Elimina los rellenos interiores por defecto.
+*/
+/* Reset básico */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-page);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Header & Nav */
+.main-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
+}
+
+.logo {
+    max-width: 150px;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--color-secondary);
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.main-nav ul li a:active {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+/* Content Sections */
+.content-section h2 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.services-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.services-list li {
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.services-list li:nth-child(odd) {
+    background-color: var(--color-dashboard);
+    color: var(--color-text);
+}
+
+.services-list li:nth-child(even) {
+    background-color: rgba(230, 126, 34, 0.15); /* Tono suave derivado del primario */
+    color: var(--color-text);
+}
+
+/* Dashboard Preview & Cards */
+.dashboard-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.dashboard-preview h2 {
+    color: var(--color-primary);
+    font-weight: 700;
+} 
+
+.dashboard-preview p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* 
+  TRANSICIÓN MULTIPROPIEDAD:
+  Define animaciones fluidas cuando la tarjeta (.card) cambia de estado (ej. en :hover).
+  Separar cada propiedad por comas evita usar 'all', mejorando el rendimiento de renderizado.
+
+  Estructura de cada línea: [Propiedad a animar] [Duración] [Curva de velocidad]
+
+  1. transform: Anima el movimiento vertical (translateY) sin afectar la maquetación.
+  2. box-shadow: Suaviza la aparición y difuminado de la sombra.
+  3. background-color: Cambia el color de fondo progresivamente.
+  4. color: Transiciona el color del texto para que no cambie de golpe.
+
+  - var(--transition-speed): Usa la variable global (0.3s) para mantener consistencia.
+  - ease: Comienza despacio, acelera en el medio y frena al final.
+*/
+    transition: transform var(--transition-speed) ease, 
+                box-shadow var(--transition-speed) ease, 
+                background-color var(--transition-speed) ease, 
+                color var(--transition-speed) ease;
+}
+
+.count {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    transition: color var(--transition-speed) ease;
+}
+
+.card:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(230, 126, 34, 0.25);
+}
+
+.card:hover .count {
+    color: #ffffff;
+}
+
+/* Footer */
+.main-footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    .main-nav ul li a {
+        display: block;
+        text-align: center;
+    }
+}
